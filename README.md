@@ -1,11 +1,5 @@
-# 01_DIGITAL_UI_CARD (Godot 4.x, Compatibility)
-
-Запуск: Godot -> Импорт -> выбрать project.godot -> F5.
-
-Сцены (папка scene):
-- ui_info.tscn - главная сцена: ввод данных (Name, Hp, Mov, Bag, Wg) и кнопка Next
-- ui.tscn      - карточка: аватар, имя, сердечки (hp/2), уровень, статы, часы
-- main.tscn    - учебная карточка из фаз 2-5 (кнопки Dev / Design). Запуск: открыть и нажать F6
-
-Скрипты (папка script): global.gd (автозагрузка Global), ui_info.gd, ui.gd, main.gd
-Ассеты (папка assets): картинки, шрифт ComicoroRu_0.ttf, тема main_theme.tres
+# 01_DIGITAL_UI_CARD 
+26.10.2026
+Демин Владислав Васильевич / Крюков Валерий Артемович
+<img width="1808" height="1054" alt="image" src="https://github.com/user-attachments/assets/978d9819-6111-4f3a-81e0-8fe9721cad91" />
+<img width="1803" height="1056" alt="image" src="https://github.com/user-attachments/assets/ac90e8e9-c809-4983-a4ca-6349cef0b43d" />
