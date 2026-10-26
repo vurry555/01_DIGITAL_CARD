@@ -1,0 +1,147 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://assets/main_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://script/ui_info.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://scene/ui.tscn" id="3_next"]
+[ext_resource type="Texture2D" path="res://assets/sprite.png" id="4_sprite"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp"]
+atlas = ExtResource("4_sprite")
+region = Rect2(33, 17, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mov"]
+atlas = ExtResource("4_sprite")
+region = Rect2(29, 33, 36, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bag"]
+atlas = ExtResource("4_sprite")
+region = Rect2(0, 47, 31, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg"]
+atlas = ExtResource("4_sprite")
+region = Rect2(31, 47, 33, 17)
+
+[node name="UInfo" type="Control" node_paths=PackedStringArray("hp", "mov", "bag", "wg", "name_input")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+hp = NodePath("VBoxContainer/Hp/HpTextEdit")
+mov = NodePath("VBoxContainer/Mov/MovTextEdit")
+bag = NodePath("VBoxContainer/Bag/BagTextEdit")
+wg = NodePath("VBoxContainer/Wg/WgTextEdit")
+name_input = NodePath("VBoxContainer/Name/NameTextEdit")
+next_scene = ExtResource("3_next")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435, 0.373, 0.333, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Name" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/Name"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+text = "Name:"
+
+[node name="NameTextEdit" type="TextEdit" parent="VBoxContainer/Name"]
+custom_minimum_size = Vector2(70, 17)
+layout_mode = 2
+
+[node name="Hp" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="HpTextureRect" type="TextureRect" parent="VBoxContainer/Hp"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hp")
+stretch_mode = 2
+
+[node name="HpTextEdit" type="TextEdit" parent="VBoxContainer/Hp"]
+custom_minimum_size = Vector2(70, 17)
+layout_mode = 2
+
+[node name="Mov" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="MovTextureRect" type="TextureRect" parent="VBoxContainer/Mov"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_mov")
+stretch_mode = 2
+
+[node name="MovTextEdit" type="TextEdit" parent="VBoxContainer/Mov"]
+custom_minimum_size = Vector2(70, 17)
+layout_mode = 2
+
+[node name="Bag" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="BagTextureRect" type="TextureRect" parent="VBoxContainer/Bag"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bag")
+stretch_mode = 2
+
+[node name="BagTextEdit" type="TextEdit" parent="VBoxContainer/Bag"]
+custom_minimum_size = Vector2(70, 17)
+layout_mode = 2
+
+[node name="Wg" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="WgTextureRect" type="TextureRect" parent="VBoxContainer/Wg"]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_wg")
+stretch_mode = 2
+
+[node name="WgTextEdit" type="TextEdit" parent="VBoxContainer/Wg"]
+custom_minimum_size = Vector2(70, 17)
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next"
+
+[connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

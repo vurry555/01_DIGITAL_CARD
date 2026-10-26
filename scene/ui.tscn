@@ -1,0 +1,198 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://assets/main_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://script/ui.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/icon-2.png" id="3_avatar"]
+[ext_resource type="Texture2D" path="res://assets/sprite.png" id="4_sprite"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv"]
+atlas = ExtResource("4_sprite")
+region = Rect2(33, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp"]
+atlas = ExtResource("4_sprite")
+region = Rect2(33, 17, 32, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mov"]
+atlas = ExtResource("4_sprite")
+region = Rect2(29, 33, 36, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bag"]
+atlas = ExtResource("4_sprite")
+region = Rect2(0, 47, 31, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg"]
+atlas = ExtResource("4_sprite")
+region = Rect2(31, 47, 33, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_time"]
+atlas = ExtResource("4_sprite")
+region = Rect2(2, 20, 28, 26)
+
+[node name="Main" type="Control" node_paths=PackedStringArray("hearts_container", "name_label", "lv_label", "hp_label", "mov_label", "bag_label", "wg_label", "time_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+hearts_container = NodePath("VBoxContainer/UserBoxContainer/VBoxContainer/HpFlowContainer")
+name_label = NodePath("VBoxContainer/UserBoxContainer/VBoxContainer/NameLabel")
+lv_label = NodePath("VBoxContainer/LvBoxContainer/LvLabel")
+hp_label = NodePath("VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Hp/HpLabel")
+mov_label = NodePath("VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Mov/MovLabel")
+bag_label = NodePath("VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Bag/BagLabel")
+wg_label = NodePath("VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Wg/WgLabel")
+time_label = NodePath("VBoxContainer/Stats/TimeBoxContainer/TimeLabel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.435, 0.373, 0.333, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="UserBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UserPanelContainer" type="PanelContainer" parent="VBoxContainer/UserBoxContainer"]
+layout_mode = 2
+
+[node name="UserTextureRect" type="TextureRect" parent="VBoxContainer/UserBoxContainer/UserPanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_avatar")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/UserBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/UserBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "lele"
+
+[node name="HpFlowContainer" type="HFlowContainer" parent="VBoxContainer/UserBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[node name="LvBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LvTextureRect" type="TextureRect" parent="VBoxContainer/LvBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_lv")
+stretch_mode = 2
+
+[node name="LvLabel" type="Label" parent="VBoxContainer/LvBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Stats" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatsPanelContainer" type="PanelContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="StatsGridContainer" type="GridContainer" parent="VBoxContainer/Stats/StatsPanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Hp" type="HBoxContainer" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HpTextureRect" type="TextureRect" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Hp"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_hp")
+stretch_mode = 2
+
+[node name="HpLabel" type="Label" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Hp"]
+layout_mode = 2
+text = "5"
+
+[node name="Mov" type="HBoxContainer" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="MovTextureRect" type="TextureRect" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Mov"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_mov")
+stretch_mode = 2
+
+[node name="MovLabel" type="Label" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Mov"]
+layout_mode = 2
+text = "5"
+
+[node name="Bag" type="HBoxContainer" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="BagTextureRect" type="TextureRect" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Bag"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_bag")
+stretch_mode = 2
+
+[node name="BagLabel" type="Label" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Bag"]
+layout_mode = 2
+text = "5"
+
+[node name="Wg" type="HBoxContainer" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="WgTextureRect" type="TextureRect" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Wg"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_wg")
+stretch_mode = 2
+
+[node name="WgLabel" type="Label" parent="VBoxContainer/Stats/StatsPanelContainer/StatsGridContainer/Wg"]
+layout_mode = 2
+text = "5"
+
+[node name="TimeBoxContainer" type="HBoxContainer" parent="VBoxContainer/Stats"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="TimeTextureRect" type="TextureRect" parent="VBoxContainer/Stats/TimeBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_time")
+stretch_mode = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/Stats/TimeBoxContainer"]
+layout_mode = 2
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
